@@ -11,8 +11,8 @@ const authMiddleware = async (req, res, next) => {
       throw new Error('User not found');
     }
 
-    req.user = user; // Attach the user to the request object
-    req.token = token; // Attach the token to the request object
+    req.user = user;
+    req.token = token;
     next();
   } catch (error) {
     res.status(401).json({ error: 'Please authenticate' });

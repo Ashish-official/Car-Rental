@@ -1,31 +1,38 @@
-const User = require('../models/user');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
+const userService = require('../services/userService');
 
-const registerUser = async (req, res) => {
-  const { name, email, password } = req.body;
+// Get the authenticated user's profile
+const getUserProfile = async (req, res) => {
   try {
-    const user = new User({ name, email, password });
-    await user.save();
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
-    res.status(201).json({ user, token });
+    const user = await userService.getUserProfile(req.user.id);
+    res.json(user);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// Update the authenticated user's profile
+const updateUserProfile = async (req, res) => {
+  try {
+    const { name, email } = req.body;
+    const user = await userService.updateUserProfile(req.user.id, name, email);
+    res.json(user);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
 };
 
-const loginUser = async (req, res) => {
-  const { email, password } = req.body;
+// Delete the authenticated user's account
+const deleteUserProfile = async (req, res) => {
   try {
-    const user = await User.findOne({ email });
-    if (!user || !(await bcrypt.compare(password, user.password))) {
-      throw new Error('Invalid credentials');
-    }
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
-    res.json({ user, token });
+    const result = await userService.deleteUserProfile(req.user.id);
+    res.json(result);
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    res.status(500).json({ error: error.message });
   }
 };
 
-module.exports = { registerUser, loginUser };
+module.exports = {
+  getUserProfile,
+  updateUserProfile,
+  deleteUserProfile,
+};

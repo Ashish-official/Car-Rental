@@ -1,8 +1,18 @@
 const express = require('express');
-const { registerUser, loginUser } = require('../controllers/userController');
+const userController = require('../controllers/userController');
+const authMiddleware = require('../middlewares/authMiddleware');
 const router = express.Router();
 
-router.post('/register', registerUser);
-router.post('/login', loginUser);
+// Protect all user routes with authentication
+router.use(authMiddleware);
+
+// Get the authenticated user's profile
+router.get('/me', userController.getUserProfile);
+
+// Update the authenticated user's profile
+router.put('/me', userController.updateUserProfile);
+
+// Delete the authenticated user's account
+router.delete('/me', userController.deleteUserProfile);
 
 module.exports = router;
