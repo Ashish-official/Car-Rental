@@ -16,15 +16,15 @@ function Contact() {
                 years of experience.
               </p>
               <a href="/">
-                <i className="fa-solid fa-phone"></i>&nbsp; (123) 456-7869
+                <i className="fa-solid fa-phone"></i>&nbsp; 7041336594
               </a>
               <a href="/">
                 <i className="fa-solid fa-envelope"></i>&nbsp;
-                carrental@xyz.com
+                rental@gmail.com
               </a>
               <a href="/">
-                <i className="fa-solid fa-location-dot"></i>&nbsp; Bengaluru,
-                Karnatka
+                <i className="fa-solid fa-location-dot"></i>&nbsp; surat,
+                gujarat,India
               </a>
             </div>
             <div className="contact-div__form">
@@ -32,15 +32,15 @@ function Contact() {
                 <label>
                   Full Name <b>*</b>
                 </label>
-                <input type="text" placeholder='E.g: "Joe Shmoe"'></input>
+                <input type="text" placeholder='E.g: ASHISH SINGH'></input>
 
                 <label>
                   Email <b>*</b>
                 </label>
-                <input type="email" placeholder="youremail@example.com"></input>
+                <input type="email" placeholder="ashishsingh704133@gmail.com"></input>
 
                 <label>
-                  Tell us about it <b>*</b>
+                  Write your query here <b>*</b>
                 </label>
                 <textarea placeholder="Write Here.."></textarea>
 
@@ -56,10 +56,10 @@ function Contact() {
           <div className="book-banner__overlay"></div>
           <div className="container">
             <div className="text-content">
-              <h2>Book a car by getting in touch with us</h2>
+              <h2>For any help please reach out us at </h2>
               <span>
                 <i className="fa-solid fa-phone"></i>
-                <h3>(123) 456-7869</h3>
+                <h3>7041336594</h3>
               </span>
             </div>
           </div>
