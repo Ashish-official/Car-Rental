@@ -26,6 +26,16 @@ const userSchema = new mongoose.Schema({
     minlength: 8,
     trim: true,
   },
+  contact: {
+    type: Number,
+    required: true,
+    validate: {
+      validator: function (v) {
+        return /^\d{10}$/.test(v); // Regex to ensure the number is exactly 10 digits
+      },
+      message: 'Contact number must be exactly 10 digits long'
+    }
+  }
 });
 
 // Hash password before saving
