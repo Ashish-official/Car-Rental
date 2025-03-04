@@ -1,0 +1,183 @@
+/* Register Container */
+.register-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 3rem;
+    background: linear-gradient(135deg, #ffffff, #f8f8f8);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.register-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Heading */
+.register-container h2 {
+    text-align: center;
+    font-size: 2.8rem;
+    font-family: "Poppins", sans-serif;
+    color: #010103;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.register-container h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: #ff4d30;
+}
+
+/* Form Styles */
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    font-size: 1.4rem;
+    font-family: "Rubik", sans-serif;
+    color: #010103;
+    margin-bottom: 0.5rem;
+    display: block;
+    font-weight: 500;
+}
+
+input {
+    width: 100%;
+    padding: 1.2rem;
+    font-size: 1.6rem;
+    font-family: "Rubik", sans-serif;
+    border: 1px solid #ccd7e6;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus {
+    border-color: #ff4d30;
+    box-shadow: 0 0 8px rgba(255, 77, 48, 0.3);
+}
+
+/* Error Handling */
+.error-input {
+    border-color: #ff2525;
+    background-color: #fff5f5;
+}
+
+.error-message {
+    color: #ff2525;
+    font-size: 1.2rem;
+    font-family: "Rubik", sans-serif;
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.error-message i {
+    font-size: 1.4rem;
+}
+
+/* Button Styles */
+.register-button {
+    width: 100%;
+    padding: 1.5rem;
+    background-color: #ff4d30;
+    color: white;
+    font-size: 1.6rem;
+    font-family: "Rubik", sans-serif;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 10px 15px rgba(255, 83, 48, 0.35);
+}
+
+.register-button:hover {
+    background-color: #fa4226;
+    transform: translateY(-2px);
+    box-shadow: 0 15px 20px rgba(255, 83, 48, 0.5);
+}
+
+.register-button:active {
+    transform: translateY(0);
+    box-shadow: 0 10px 15px rgba(255, 83, 48, 0.35);
+}
+
+/* Link to Login or Other Pages */
+.register-link {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 1.4rem;
+    font-family: "Rubik", sans-serif;
+    color: #706f7b;
+}
+
+.register-link a {
+    color: #ff4d30;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.register-link a:hover {
+    color: #fa4226;
+}
+
+/* Custom Checkbox */
+.terms-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.terms-checkbox input[type="checkbox"] {
+    width: 1.6rem;
+    height: 1.6rem;
+    accent-color: #ff4d30; /* Custom checkbox color */
+    cursor: pointer;
+}
+
+.terms-checkbox label {
+    font-size: 1.4rem;
+    color: #010103;
+    cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .register-container {
+        padding: 2rem;
+    }
+
+    .register-container h2 {
+        font-size: 2.4rem;
+    }
+
+    input {
+        padding: 1rem;
+        font-size: 1.4rem;
+    }
+
+    .register-button {
+        padding: 1.2rem;
+        font-size: 1.4rem;
+    }
+}
