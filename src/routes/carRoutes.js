@@ -1,6 +1,6 @@
 const express = require('express');
 const carController = require('../controllers/carController');
-const authMiddleware = require('../middlewares/authMiddleware');
+const { authMiddleware } = require('../middlewares/authMiddleware');
 const router = express.Router();
 
 // Protect all car routes with authentication
