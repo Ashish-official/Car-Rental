@@ -1,18 +1,19 @@
 const express = require('express');
 const userController = require('../controllers/userController');
-const { authMiddleware } = require('../middlewares/authMiddleware');
+const { authMiddleware, checkRole } = require('../middlewares/authMiddleware');
 const router = express.Router();
 
-// Protect all user routes with authentication
+// Apply auth middleware to all routes
 router.use(authMiddleware);
 
-// Get the authenticated user's profile
+// User profile routes
 router.get('/me', userController.getUserProfile);
-
-// Update the authenticated user's profile
 router.put('/me', userController.updateUserProfile);
-
-// Delete the authenticated user's account
 router.delete('/me', userController.deleteUserProfile);
 
-module.exports = router;
+// Admin routes
+router.get('/admin/all', checkRole(['admin']), userController.getAllUsers);
+router.put('/admin/:id/status', checkRole(['admin']), userController.updateUserStatus);
+router.delete('/admin/:id', checkRole(['admin']), userController.deleteUser);
+
+module.exports = router; 

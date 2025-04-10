@@ -2,7 +2,7 @@ const Booking = require('../models/booking');
 const Car = require('../models/car');
 
 // Create a new booking
-const createBooking = async (userId, carId, startDate, endDate) => {
+const createBooking = async (userId, carId, startDate, endDate, pickupLocation, dropoffLocation, totalPrice) => {
   // Check if the car exists
   const car = await Car.findById(carId);
   if (!car) {
@@ -27,6 +27,10 @@ const createBooking = async (userId, carId, startDate, endDate) => {
     user: userId,
     startDate,
     endDate,
+    pickupLocation,
+    dropoffLocation,
+    totalPrice,
+    status: 'pending'
   });
 
   await booking.save();
@@ -86,10 +90,34 @@ const deleteBooking = async (bookingId, userId) => {
   return { message: 'Booking deleted successfully' };
 };
 
+// Admin: Get all bookings
+const getAllBookings = async () => {
+  const bookings = await Booking.find()
+    .populate('car', 'make model year pricePerDay')
+    .populate('user', 'name email');
+  return bookings;
+};
+
+// Admin: Update booking status
+const updateBookingStatus = async (bookingId, status) => {
+  const booking = await Booking.findById(bookingId);
+
+  if (!booking) {
+    throw new Error('Booking not found');
+  }
+
+  booking.status = status;
+  await booking.save();
+
+  return booking;
+};
+
 module.exports = {
   createBooking,
   getUserBookings,
   getBookingById,
   updateBooking,
   deleteBooking,
+  getAllBookings,
+  updateBookingStatus,
 };

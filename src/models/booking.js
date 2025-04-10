@@ -19,6 +19,23 @@ const bookingSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
+  pickupLocation: {
+    type: String,
+    required: true,
+  },
+  dropoffLocation: {
+    type: String,
+    required: true,
+  },
+  totalPrice: {
+    type: Number,
+    required: true,
+  },
+  status: {
+    type: String,
+    enum: ['pending', 'confirmed', 'completed', 'cancelled'],
+    default: 'pending'
+  },
   createdAt: {
     type: Date,
     default: Date.now,
